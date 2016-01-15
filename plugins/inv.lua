@@ -20,7 +20,7 @@ If print_name is not exist, it will failed silently.
 do
 
   local function invite_user(chat_id, user_id, type_id)
-    if is_super_banned(user_id) or is_banned(user_id, chat_id) then
+    if is_banned(user_id, chat_id) then
       return send_large_msg('chat#id'..chat_id, 'Invitation canceled.\n'
                             ..'ID'..user_id..' is (super)banned.')
     end
