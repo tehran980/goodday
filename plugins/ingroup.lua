@@ -445,7 +445,7 @@ local function lock_group_adds(msg, data, target)
    end
    local group_adds_lock = data[tostring(target)]['settings']['lock_adds']
    if group_adds_lock == 'yes' then
-     return 'Adds protection is already enabled"
+     return 'Adds protection is already enabled'
    else
      data[tostring(target)]['settings']['lock_adds'] = 'yes'
      save_data(_config.moderation.data, data)
