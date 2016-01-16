@@ -17,7 +17,8 @@ local function check_member_autorealm(cb_extra, success, result)
           lock_photo = 'no',
           lock_member = 'no',
           flood = 'yes',
-          lock_adds = 'yes'
+          lock_adds = 'yes',
+          lock_abuse = 'yes'
         }
       }
       save_data(_config.moderation.data, data)
@@ -48,6 +49,8 @@ local function check_member_realm_add(cb_extra, success, result)
           lock_photo = 'no',
           lock_member = 'no',
           flood = 'yes'
+           lock_adds = 'yes',
+          lock_abuse = 'yes'
         }
       }
       save_data(_config.moderation.data, data)
@@ -80,7 +83,8 @@ function check_member_group(cb_extra, success, result)
           lock_photo = 'no',
           lock_member = 'no',
           flood = 'yes',
-          lock_adds = 'no'
+           lock_adds = 'yes',
+          lock_abuse = 'yes'
         }
       }
       save_data(_config.moderation.data, data)
@@ -113,6 +117,8 @@ local function check_member_modadd(cb_extra, success, result)
           lock_photo = 'no',
           lock_member = 'no',
           flood = 'yes',
+           lock_adds = 'yes',
+          lock_abuse = 'yes'
         }
       }
       save_data(_config.moderation.data, data)
@@ -206,7 +212,7 @@ local function show_group_settingsmod(msg, data, target)
     	leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
    	end
   local settings = data[tostring(target)]['settings']
- local text = "Group settings:\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group member : "..settings.lock_member.."\nflood sensitivity : "..NUM_MSG_MAX.."\nBot protection : "..bots_protection.."\nAdds protection : "..settings.lock_adds
+ local text = "Group settings:\nLock group name : "..settings.lock_name.."\nLock group photo : "..settings.lock_photo.."\nLock group member : "..settings.lock_member.."\nflood sensitivity : "..NUM_MSG_MAX.."\nBot protection : "..bots_protection.."\nAdds protection : "..settings.lock_adds.."\nAbuse protection : "..settings.lock_abuse
   return text
 end
 
@@ -464,6 +470,28 @@ local function lock_group_adds(msg, data, target)
      data[tostring(target)]['settings']['lock_adds'] = 'no'
      save_data(_config.moderation.data, data)
      return 'Adds protection has been disabled'
+   end
+   local function lock_group_abuse(msg, data, target)
+   if not is_momod(msg) then
+     return "For moderators only!"
+   end
+   local group_abuse_lock = data[tostring(target)]['settings']['lock_abuse']
+   if group_abuse_lock == 'yes' then
+     return 'Abuse protection is already enabled'
+   else
+     data[tostring(target)]['settings']['lock_abuse'] = 'yes'
+     save_data(_config.moderation.data, data)
+     return 'Abuse protection has been enabled'
+   end
+ end
+ 
+   local group_abuse_lock = data[tostring(target)]['settings']['lock_abuse']
+   if group_abuse_lock == 'no' then
+     return 'Abouse protection is already disabled'
+   else
+     data[tostring(target)]['settings']['lock_abuse'] = 'no'
+     save_data(_config.moderation.data, data)
+     return 'Abuse protection has been disabled'
    end
  end
  
@@ -1027,6 +1055,10 @@ local function run(msg, matches)
           savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked adds ")
           return lock_group_adds(msg, data, target)
         end
+      if matches[2] == 'abuse' then
+          savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked abuse ")
+          return lock_group_abuse(msg, data, target)
+        end
     if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked leaving ")
        return lock_group_leave(msg, data, target)
@@ -1061,6 +1093,10 @@ local function run(msg, matches)
      if matches[2] == 'adds' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked adds ")
          return unlock_group_adds(msg, data, target)
+       end
+     if matches[2] == 'abuse' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked abuse ")
+         return unlock_group_abuse(msg, data, target)
        end
     if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked leaving ")
