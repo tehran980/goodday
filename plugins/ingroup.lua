@@ -1060,7 +1060,7 @@ local function run(msg, matches)
       end
      if matches[2] == 'adds' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked adds ")
-         return lock_group_adds(msg, data, target)
+         return unlock_group_adds(msg, data, target)
        end
     if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked leaving ")
