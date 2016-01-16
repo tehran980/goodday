@@ -496,6 +496,7 @@ local function lock_group_adds(msg, data, target)
      save_data(_config.moderation.data, data)
      return 'Abuse protection has been disabled'
    end
+   end
  end
  
  
@@ -1367,5 +1368,5 @@ return {
   run = run
 }
 end
-end
+
 
