@@ -1023,7 +1023,7 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked bots ")
         return lock_group_bots(msg, data, target)
       end
-        If matches[2] == 'adds' then
+      if matches[2] == 'adds' then
           savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked adds ")
           return lock_group_adds(msg, data, target)
         end
