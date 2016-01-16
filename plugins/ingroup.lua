@@ -471,7 +471,7 @@ local function lock_group_adds(msg, data, target)
      save_data(_config.moderation.data, data)
      return 'Adds protection has been disabled'
    end
-   local function lock_group_abuse(msg, data, target)
+   local function lock_group_abuuse(msg, data, target)
    if not is_momod(msg) then
      return "For moderators only!"
    end
@@ -1057,7 +1057,7 @@ local function run(msg, matches)
         end
       if matches[2] == 'abuse' then
           savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked abuse ")
-          return lock_group_abuse(msg, data, target)
+          return lock_group_abuuse(msg, data, target)
         end
     if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked leaving ")
@@ -1096,7 +1096,7 @@ local function run(msg, matches)
        end
      if matches[2] == 'abuse' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked abuse ")
-         return unlock_group_abuse(msg, data, target)
+         return unlock_group_abuuse(msg, data, target)
        end
     if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked leaving ")
