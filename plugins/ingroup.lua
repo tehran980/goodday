@@ -484,7 +484,10 @@ local function lock_group_adds(msg, data, target)
      return 'Abuse protection has been enabled'
    end
  end
- 
+ local function unlock_group_abuuse(msg, data, target)
+   if not is_momod(msg) then
+     return "For moderators only!"
+   end
    local group_abuse_lock = data[tostring(target)]['settings']['lock_abuse']
    if group_abuse_lock == 'no' then
      return 'Abouse protection is already disabled'
