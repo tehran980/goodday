@@ -56,7 +56,7 @@ do
   local function run(msg, matches)
     if is_sudo(msg) then
       -- Show the available plugins
-      if matches[1] == '!plugins' then
+      if matches[1] == '!plug' then
         return list_plugins()
       -- Re-enable a plugin for this chat
       elseif matches[1] == '+' and matches[3] == 'gp' then
@@ -148,12 +148,12 @@ do
       },
     },
     patterns = {
-      "^!plugins$",
-      "^!plugins? (+) ([%w_%.%-]+)$",
-      "^!plugins? (-) ([%w_%.%-]+)$",
-      "^!plugins? (+) ([%w_%.%-]+) (gp)$",
-      "^!plugins? (-) ([%w_%.%-]+) (gp)$",
-      "^!plugins? (r)$"
+      "^!plug$",
+      "^!plug? (+) ([%w_%.%-]+)$",
+      "^!plug? (-) ([%w_%.%-]+)$",
+      "^!plug? (+) ([%w_%.%-]+) (gp)$",
+      "^!plug? (-) ([%w_%.%-]+) (gp)$",
+      "^!plug? (r)$"
     },
     run = run,
     moderated = true
