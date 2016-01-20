@@ -513,7 +513,7 @@ local function welcome_yes(msg, data, target)
      return 'Welcome has been enabled'
    end
  end
- 
+ end
  local function welcome_no(msg, data, target)
    if not is_momod(msg) then
      return "For moderators only!"
@@ -527,7 +527,7 @@ local function welcome_yes(msg, data, target)
      return 'Welcome has been disabled'
    end
  end
- 
+ end
  
 local function set_rulesmod(msg, data, target)
   if not is_momod(msg) then
