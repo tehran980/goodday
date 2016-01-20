@@ -67,6 +67,14 @@ local function description_rules(msg, nama)
 end
 
 local function run(msg, matches)
+     local data = load_data(_config.moderation.data)
+     if data[tostring(msg.to.id)] then
+         if data[tostring(msg.to.id)]['settings'] then
+             if data[tostring(msg.to.id)]['settings']['welcome_yes'] then
+                 welcome_yes = data[tostring(msg.to.id)]['settings']['welcome_yes']
+             end
+         end
+     end
    if not msg.service then
       return "Are you trying to troll me?"
    end
