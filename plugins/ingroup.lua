@@ -18,7 +18,8 @@ local function check_member_autorealm(cb_extra, success, result)
           lock_member = 'no',
           flood = 'yes',
           lock_adds = 'yes',
-          lock_abuse = 'yes'
+          lock_abuse = 'yes',
+          welcome_stat = 'yes',
         }
       }
       save_data(_config.moderation.data, data)
@@ -50,7 +51,8 @@ local function check_member_realm_add(cb_extra, success, result)
           lock_member = 'no',
           flood = 'yes',
            lock_adds = 'yes',
-          lock_abuse = 'yes'
+          lock_abuse = 'yes',
+          welcome_stat = 'yes',
         }
       }
       save_data(_config.moderation.data, data)
@@ -84,7 +86,8 @@ function check_member_group(cb_extra, success, result)
           lock_member = 'no',
           flood = 'yes',
            lock_adds = 'yes',
-          lock_abuse = 'yes'
+          lock_abuse = 'yes',
+          welcome_stat = 'yes',
         }
       }
       save_data(_config.moderation.data, data)
@@ -212,7 +215,7 @@ local function show_group_settingsmod(msg, data, target)
     	leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
    	end
   local settings = data[tostring(target)]['settings']
- local text = "Group settings:\nLock group name✏️: "..settings.lock_name.."\nLock group photo🎡: "..settings.lock_photo.."\nLock group member👥: "..settings.lock_member.."\nflood sensitivity🤘: "..NUM_MSG_MAX.."\nBot protection👾: "..bots_protection.."\nAdds protection☠: "..settings.lock_adds
+ local text = "Group settings:\nLock group name✏️: "..settings.lock_name.."\nLock group photo🎡: "..settings.lock_photo.."\nLock group member👥: "..settings.lock_member.."\nflood sensitivity🤘: "..NUM_MSG_MAX.."\nBot protection👾: "..bots_protection.."\nAdds protection☠: "..settings.lock_adds.."\nWelcome Stat👻: "..settings.welcome_stat
   return text
 end
 
@@ -496,6 +499,32 @@ local function lock_group_adds(msg, data, target)
      save_data(_config.moderation.data, data)
      return 'Abuse protection has been disabled'
    end
+end
+local function welcome_yes(msg, data, target)
+   if not is_momod(msg) then
+     return "For moderators only!"
+   end
+   local welcome_yes = data[tostring(target)]['settings']['welcome_yes']
+   if welcome_yes == 'yes' then
+     return 'Welcome is already enabled'
+   else
+     data[tostring(target)]['settings']['welcome_yes'] = 'yes'
+     save_data(_config.moderation.data, data)
+     return 'Welcome has been enabled'
+   end
+ end
+ 
+ local function welcome_no(msg, data, target)
+   if not is_momod(msg) then
+     return "For moderators only!"
+   end
+   local welcome_no = data[tostring(target)]['settings']['welcome_no']
+   if group_adds_lock == 'no' then
+     return 'Welcome is already disabled'
+   else
+     data[tostring(target)]['settings']['welcome_no'] = 'no'
+     save_data(_config.moderation.data, data)
+     return 'Welcome has been disabled'
    end
  end
  
@@ -1033,6 +1062,20 @@ local function run(msg, matches)
         return set_descriptionmod(msg, data, target, about)
       end
     end
+    if matches[1] == 'welcome' then
+      local target = msg.to.id
+      if matches[2] == 'yes' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] enabled Welcome ")
+        return welcome_yes(msg, data, target)
+      end
+   end
+   if matches[1] == 'welcome' then
+      local target = msg.to.id
+      if matches[2] == 'no' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] disabled Welcome ")
+        return welcome_no(msg, data, target)
+      end
+  end
     if matches[1] == 'lock' then
       local target = msg.to.id
       if matches[2] == 'name' then
@@ -1315,6 +1358,7 @@ return {
   "^[!/.]([Dd]emote) (.*)$",
   "^[!/.]([Dd]emote)",
   "^[!/.]([Ss]et) ([^%s]+) (.*)$",
+  "^[!/.]([Ww]elcome) (.*)$",
   "^[!/.]([Ll]ock) (.*)$",
   "^[!/.]([Ss]etowner) (%d+)$",
   "^[!/.]([Ss]etowner)",
@@ -1348,6 +1392,7 @@ return {
   "^([Dd]emote)",
   "^([Ss]et) ([^%s]+) (.*)$",
   "^([Ll]ock) (.*)$",
+  "^([Ww]elcome) (.*)$",
   "^([Ss]etowner) (%d+)$",
   "^([Ss]etowner)",
   "^([Oo]wner)$",
