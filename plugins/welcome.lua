@@ -70,8 +70,8 @@ local function run(msg, matches)
      local data = load_data(_config.moderation.data)
      if data[tostring(msg.to.id)] then
          if data[tostring(msg.to.id)]['settings'] then
-             if data[tostring(msg.to.id)]['settings']['welcome_yes'] then
-                 welcome_yes = data[tostring(msg.to.id)]['settings']['welcome_yes']
+             if data[tostring(msg.to.id)]['settings']['welcome_stat'] then
+                 welcome_yes = data[tostring(msg.to.id)]['settings']['welcome_stat']
              end
          end
      end
