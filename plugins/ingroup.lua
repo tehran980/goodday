@@ -215,7 +215,7 @@ local function show_group_settingsmod(msg, data, target)
     	leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
    	end
   local settings = data[tostring(target)]['settings']
- local text = "Group settings:\nLock group name✏️: "..settings.lock_name.."\nLock group photo🎡: "..settings.lock_photo.."\nLock group member👥: "..settings.lock_member.."\nflood sensitivity🤘: "..NUM_MSG_MAX.."\nBot protection👾: "..bots_protection.."\nAdds protection☠: "..settings.lock_add..
+ local text = "Group settings:\nLock group name✏️: "..settings.lock_name.."\nLock group photo🎡: "..settings.lock_photo.."\nLock group member👥: "..settings.lock_member.."\nflood sensitivity🤘: "..NUM_MSG_MAX.."\nBot protection👾: "..bots_protection.."\nAdds protection☠: "..settings.lock_add
   return text
 end
 
@@ -1061,20 +1061,6 @@ local function run(msg, matches)
         return set_descriptionmod(msg, data, target, about)
       end
     end
-    if matches[1] == 'welcome' then
-      local target = msg.to.id
-      if matches[2] == 'yes' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] enabled Welcome ")
-        return welcome_yes(msg, data, target)
-      end
-   end
-   if matches[1] == 'welcome' then
-      local target = msg.to.id
-      if matches[2] == 'no' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] disabled Welcome ")
-        return welcome_no(msg, data, target)
-      end
-  end
     if matches[1] == 'lock' then
       local target = msg.to.id
       if matches[2] == 'name' then
@@ -1155,7 +1141,7 @@ local function run(msg, matches)
       return show_group_settingsmod(msg, data, target)
     end	
 
-  --[[if matches[1] == 'public' then
+  if matches[1] == 'public' then
     local target = msg.to.id
     if matches[2] == 'yes' then
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] set group to: public")
@@ -1165,7 +1151,7 @@ local function run(msg, matches)
       savelog(msg.to.id, name_log.." ["..msg.from.id.."] set group to: not public")
       return unset_public_membermod(msg, data, target)
     end
-  end]]
+  end
 
     if matches[1] == 'newlink' and not is_realm(msg) then
       if not is_momod(msg) then
