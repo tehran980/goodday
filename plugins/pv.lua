@@ -6,10 +6,10 @@ local function run(msg, matches)
 		local response = matches[3]
 		send_large_msg("user#id"..matches[2], response)
 		return "➰SenT➰"
+						end
 						local receiver = 'user#id'..user_id
 				send_large_msg(receiver, response)
 	end
-end
 end
 return {
   patterns = {
