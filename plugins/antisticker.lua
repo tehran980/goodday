@@ -386,8 +386,11 @@ function run(msg, matches)
       elseif matches[2] == 'settings' then
         return show_group_settings(msg, data)
 		  end
-    end
+end
     if matches[1] == 'sticker' then
+    	if not is_momod(msg) then
+    		return "Only Admin Can Use This Option"
+    	end
       if matches[2] == 'warn' then
         if welcome_stat ~= 'warn' then
           data[tostring(msg.to.id)]['settings']['sticker'] = 'warn'
