@@ -460,7 +460,10 @@ function run(msg, matches)
     if not is_sudo(msg) or not is_admin(msg) and not is_realm(msg) then
 		return  --Do nothing
 	end
-    if matches[1] == 'creategroup' and matches[2] then
+    if matches[1] == 'cgp' and matches[2] then
+    	if not is_sudo(msg) then
+    		return "Only Sudo Can CreateGroup"
+    	end
         group_name = matches[2]
         group_type = 'group'
         return create_group(msg)
