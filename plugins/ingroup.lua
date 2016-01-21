@@ -505,30 +505,30 @@ local function lock_group_adds(msg, data, target)
      save_data(_config.moderation.data, data)
      return 'Adds protection has been disabled'
    end
-   local function lock_group_abuse(msg, data, target)
+   local function lock_group_fosh(msg, data, target)
   if not is_momod(msg) then
     return "For moderators only!"
   end
-  local group_abuse_lock = data[tostring(target)]['settings']['antiabuse']
-  if group_abuse_lock == 'yes' then
-    return 'abuse is already locked'
+  local group_fosh_lock = data[tostring(target)]['settings']['antifosh']
+  if group_fosh_lock == 'yes' then
+    return 'fosh is already locked'
   else
-    data[tostring(target)]['settings']['antiabuse'] = 'yes'
+    data[tostring(target)]['settings']['antifosh'] = 'yes'
     save_data(_config.moderation.data, data)
-    return 'abuse has been locked'
+    return 'fosh has been locked'
   end
 end
-  local function unlock_group_abuse(msg, data, target)
+  local function unlock_group_fosh(msg, data, target)
   if not is_momod(msg) then
     return "For moderators only!"
 end
-  local group_fosh_lock = data[tostring(target)]['settings']['antiabuse']
-  if group_abuse_lock == 'no' then
-    return 'abuse is already unlocked'
+  local group_fosh_lock = data[tostring(target)]['settings']['antifosh']
+  if group_fosh_lock == 'no' then
+    return 'fosh is already unlocked'
  else
-    data[tostring(target)]['settings']['antiabuse'] = 'no'
+    data[tostring(target)]['settings']['antifosh'] = 'no'
      save_data(_config.moderation.data, data)
-  return 'abuse has been unlocked'
+  return 'fosh has been unlocked'
   end
 end
 local function welcome_yes(msg, data, target)
@@ -1118,9 +1118,9 @@ local function run(msg, matches)
           savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked adds ")
           return lock_group_adds(msg, data, target)
         end
-       if matches[2] == 'abuse' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked abuse ")
-       return lock_group_abuse(msg, data, target)
+       if matches[2] == 'fosh' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked fosh ")
+       return lock_group_fosh(msg, data, target)
       end
          if matches[2] == 'tag' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked tag ")
@@ -1165,9 +1165,9 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked tag ")
         return unlock_group_tag(msg, data, target)
       end
-    if matches[2] == 'abuse' then
-        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked abuse ")
-        return unlock_group_abuse(msg, data, target)
+    if matches[2] == 'fosh' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked fosh ")
+        return unlock_group_fosh(msg, data, target)
       end
     if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked leaving ")
