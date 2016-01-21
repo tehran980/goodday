@@ -466,9 +466,7 @@ function run(msg, matches)
     end
 
     -- if sticker is sent
-    if not is_modmod(msg) then
-    	return "Mods only"
-    	end
+    
     if msg.media and msg.media.caption == 'sticker.webp' and not is_momod(msg) then
       local user_id = msg.from.id
       local chat_id = msg.to.id
