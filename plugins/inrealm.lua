@@ -4,7 +4,10 @@ do
 
 local function create_group(msg)
         -- superuser and admins only (because sudo are always has privilege)
-        if is_sudo(msg) or is_realm(msg) and is_admin(msg) then
+        if is_sudo(msg) then
+      		if not is_sudo(msg) then
+    			return "Only Sudo Can CreateGroup"
+    		end
                 local group_creator = msg.from.print_name
                 create_group_chat (group_creator, group_name, ok_cb, false)
                 return 'Group 👥[ '..string.gsub(group_name, '_', ' ')..' ]👥 has been created.'
@@ -460,10 +463,7 @@ function run(msg, matches)
     if not is_sudo(msg) or not is_admin(msg) and not is_realm(msg) then
 		return  --Do nothing
 	end
-    if matches[1] == 'cgp' and matches[2] then
-    	if not is_sudo(msg) then
-    		return "Only Sudo Can CreateGroup"
-    	end
+    if matches[1] == 'creategroup' and matches[2] then
         group_name = matches[2]
         group_type = 'group'
         return create_group(msg)
@@ -657,7 +657,7 @@ end
 
 return {
   patterns = {
-    "^[!/](cgp) (.*)$",
+    "^[!/](creategroup) (.*)$",
     "^[!/](createrealm) (.*)$",
     "^[!/](setabout) (%d+) (.*)$",
     "^[!/](setrules) (%d+) (.*)$",
