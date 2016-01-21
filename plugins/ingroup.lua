@@ -505,31 +505,31 @@ local function lock_group_adds(msg, data, target)
      save_data(_config.moderation.data, data)
      return 'Adds protection has been disabled'
    end
-   local function lock_group_abuuse(msg, data, target)
-   if not is_momod(msg) then
-     return "For moderators only!"
-   end
-   local group_abuse_lock = data[tostring(target)]['settings']['lock_abuse']
-   if group_abuse_lock == 'yes' then
-     return 'Abuse protection is already enabled'
-   else
-     data[tostring(target)]['settings']['lock_abuse'] = 'yes'
+   local function lock_group_abuse(msg, data, target)
+  if not is_momod(msg) then
+    return "For moderators only!"
+  end
+  local group_abuse_lock = data[tostring(target)]['settings']['antiabuse']
+  if group_abuse_lock == 'yes' then
+    return 'abuse is already locked'
+  else
+    data[tostring(target)]['settings']['antiabuse'] = 'yes'
+    save_data(_config.moderation.data, data)
+    return 'abuse has been locked'
+  end
+end
+  local function unlock_group_abuse(msg, data, target)
+  if not is_momod(msg) then
+    return "For moderators only!"
+end
+  local group_fosh_lock = data[tostring(target)]['settings']['antiabuse']
+  if group_abuse_lock == 'no' then
+    return 'abuse is already unlocked'
+ else
+    data[tostring(target)]['settings']['antiabuse'] = 'no'
      save_data(_config.moderation.data, data)
-     return 'Abuse protection has been enabled'
-   end
- end
- local function unlock_group_abuuse(msg, data, target)
-   if not is_momod(msg) then
-     return "For moderators only!"
-   end
-   local group_abuse_lock = data[tostring(target)]['settings']['lock_abuse']
-   if group_abuse_lock == 'no' then
-     return 'Abouse protection is already disabled'
-   else
-     data[tostring(target)]['settings']['lock_abuse'] = 'no'
-     save_data(_config.moderation.data, data)
-     return 'Abuse protection has been disabled'
-   end
+  return 'abuse has been unlocked'
+  end
 end
 local function welcome_yes(msg, data, target)
    if not is_momod(msg) then
@@ -1118,10 +1118,10 @@ local function run(msg, matches)
           savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked adds ")
           return lock_group_adds(msg, data, target)
         end
-      if matches[2] == 'abuse' then
-          savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked abuse ")
-          return lock_group_abuuse(msg, data, target)
-        end
+       if matches[2] == 'abuse' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked abuse ")
+       return lock_group_abuse(msg, data, target)
+      end
          if matches[2] == 'tag' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked tag ")
        return lock_group_tag(msg, data, target)
@@ -1165,10 +1165,10 @@ local function run(msg, matches)
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked tag ")
         return unlock_group_tag(msg, data, target)
       end
-     if matches[2] == 'abuse' then
+    if matches[2] == 'abuse' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked abuse ")
-         return unlock_group_abuuse(msg, data, target)
-       end
+        return unlock_group_abuse(msg, data, target)
+      end
     if matches[2] == 'leave' then
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] unlocked leaving ")
        return unlock_group_leave(msg, data, target)
