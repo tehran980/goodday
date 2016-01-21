@@ -13,13 +13,16 @@ local function check_member_autorealm(cb_extra, success, result)
         group_type = 'Realm',
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
+                    lock_name = 'yes',
           lock_photo = 'no',
           lock_member = 'no',
           flood = 'yes',
-          lock_adds = 'yes',
+           lock_adds = 'yes',
           lock_abuse = 'yes',
           welcome_stat = 'yes',
+          sticker = 'ok',
+          lock_tag = 'no',
+          lock_join = 'no',
         }
       }
       save_data(_config.moderation.data, data)
@@ -54,6 +57,8 @@ local function check_member_realm_add(cb_extra, success, result)
           lock_abuse = 'yes',
           welcome_stat = 'yes',
           sticker = 'ok',
+          lock_tag = 'no',
+          lock_join = 'no',
         }
       }
       save_data(_config.moderation.data, data)
@@ -82,7 +87,7 @@ function check_member_group(cb_extra, success, result)
         set_owner = member_id ,
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_name = 'yes',
+                    lock_name = 'yes',
           lock_photo = 'no',
           lock_member = 'no',
           flood = 'yes',
@@ -90,6 +95,8 @@ function check_member_group(cb_extra, success, result)
           lock_abuse = 'yes',
           welcome_stat = 'yes',
           sticker = 'ok',
+          lock_tag = 'no',
+          lock_join = 'no',
         }
       }
       save_data(_config.moderation.data, data)
