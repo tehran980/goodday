@@ -89,7 +89,7 @@ function check_member_group(cb_extra, success, result)
            lock_adds = 'yes',
           lock_abuse = 'yes',
           welcome_stat = 'yes',
-            sticker = 'ok',
+          sticker = 'ok',
         }
       }
       save_data(_config.moderation.data, data)
@@ -123,7 +123,8 @@ local function check_member_modadd(cb_extra, success, result)
           lock_member = 'no',
           flood = 'yes',
            lock_adds = 'yes',
-          lock_abuse = 'yes'
+          lock_abuse = 'yes',
+          welcome_stat = 'yes',
             sticker = 'ok',
         }
       }
