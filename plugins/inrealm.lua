@@ -657,7 +657,7 @@ end
 
 return {
   patterns = {
-    "^[!/](creategroup) (.*)$",
+    "^[!/](cgp) (.*)$",
     "^[!/](createrealm) (.*)$",
     "^[!/](setabout) (%d+) (.*)$",
     "^[!/](setrules) (%d+) (.*)$",
