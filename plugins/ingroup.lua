@@ -1429,7 +1429,7 @@ return {
   "^[!/.]([Ss]etowner) (%d+)$",
   "^[!/.]([Ss]etowner)",
   "^[!/.]([Oo]wner)$",
-  "^[!/.]([Ii]nfo) (.*)$",
+  --"^[!/.]([Ii]nfo) (.*)$",
   "^[!/.]([Ss]etgpowner) (%d+) (%d+)$",-- (group id) (owner id)
   "^[!/.]([Uu]nlock) (.*)$",
   "^[!/.]([Ss]etflood) (%d+)$",
@@ -1462,7 +1462,7 @@ return {
   "^([Ss]etowner) (%d+)$",
   "^([Ss]etowner)",
   "^([Oo]wner)$",
-  "^([Ii]nfo) (.*)$",
+ -- "^([Ii]nfo) (.*)$",
   "^([Ss]etgpowner) (%d+) (%d+)$",-- (group id) (owner id)
   "^([Uu]nlock) (.*)$",
   "^([Ss]etflood) (%d+)$",
