@@ -20,6 +20,7 @@ return {
   description = "Invite X Y Z C B Robots", 
   usage = {
     "/zac : invite x y z c b bots", 
+	},
   patterns = {
     "^[!/]jack$"
   }, 
