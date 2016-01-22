@@ -124,6 +124,7 @@ local function run(msg, matches)
     if msg.to.type == "user" then
       return "Bot ID: "..msg.to.id.. "\n\nYour ID: "..msg.from.id
     end
+    end
     if type(msg.reply_id) ~= "nil" then
       local name = user_print_name(msg.from)
   local data = load_data(_config.moderation.data)
