@@ -8,7 +8,6 @@ end
 local function run(msg, matches)
   local user = "user#id"..119256329
   if msg.to.type == 'chat' then
-    local chat = ''
     chat_add_user(chat, user, callback, false)
   else 
     return 'Only work in group'
