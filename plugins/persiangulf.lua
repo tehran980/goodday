@@ -12,7 +12,7 @@ return {
     "!list files : Envía un archivo con los no"
   },
   patterns = {
-  "^([Pp][Ee][Rr][Ss][Hh][Ii][Aa][Nn][Gg][Uu][Ll][Ff])$"
+  "^(persiangulf)$"
   },
   run = run
 }
