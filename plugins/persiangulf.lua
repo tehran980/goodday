@@ -6,9 +6,6 @@ local function run(msg, matches)
 	 if matches[1] == 'persiangulf' then
 	 return about
       send_document(receiver, "./bot/sticker.webp", ok_cb, false)
-    end
-	end
-	end
 end
 return {
   description = ":D",
