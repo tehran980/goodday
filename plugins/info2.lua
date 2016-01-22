@@ -88,7 +88,7 @@ do
     if is_chat_msg(msg) then
       if msg.text == '!info' then
         if msg.reply_id then
-          if is_mod(msg) then
+          if is_momod(msg) then
             msgr = get_message(msg.reply_id, action_by_reply, {receiver=receiver})
           end
         else
