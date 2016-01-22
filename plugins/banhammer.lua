@@ -126,12 +126,28 @@ local function run(msg, matches)
     end
     if type(msg.reply_id) ~= "nil" then
       local name = user_print_name(msg.from)
+      local modlist =  local data = load_data(_config.moderation.data)
+  local groups = "groups"
+  if not data[tostring(groups)][tostring(msg.to.id)] then
+    return 'Group is not added.'
+  end
+  -- determine if table is empty
+  if next(data[tostring(msg.to.id)]['moderators']) == nil then --fix way
+    return 'No moderator in this group.'
+  end
+  local i = 1
+  local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
+  for k,v in pairs(data[tostring(msg.to.id)]['moderators']) do
+    message = message ..i..' - '..v..' [' ..k.. '] \n'
+    i = i + 1
+  end
+  end
         savelog(msg.to.id, name.." ["..msg.from.id.."] used /id ")
         id = get_message(msg.reply_id,get_message_callback_id, false)
     elseif matches[1]:lower() == 'id' then
       local name = user_print_name(msg.from)
       savelog(msg.to.id, name.." ["..msg.from.id.."] used /id ")
-      return "Group ID for " ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n"..msg.to.id  
+      return "Group ID for " ..string.gsub(msg.to.print_name, "_", " ").. ":\n\n"..msg.to.id..."\n\n"..modlist
     end
   end
   if matches[1]:lower() == 'kickme' then-- /kickme
