@@ -387,35 +387,6 @@ function run(msg, matches)
         return show_group_settings(msg, data)
 		  end
 end
-    if matches[1] == 'sticker' then
-    	if not is_momod(msg) then
-    		return "Only Admin Can Use This Option"
-    	end
-      if matches[2] == 'warn' then
-        if welcome_stat ~= 'warn' then
-          data[tostring(msg.to.id)]['settings']['image'] = 'warn'
-          save_data(_config.moderation.data, data)
-        end
-        return '[Alredy Enabled]\nSticker Sender will be warned first, then kicked for second image.'
-      end
-      if matches[2] == 'kick' then
-        if welcome_stat ~= 'kick' then
-          data[tostring(msg.to.id)]['settings']['image'] = 'kick'
-          save_data(_config.moderation.data, data)
-        end
-        return '[Already Enabled]image Sender will be kicked!'
-      end
-      if matches[2] == 'ok' then
-        if welcome_stat == 'ok' then
-          return '[Already Disabled]Nothing Will Happend If image Sent!'
-        else
-          data[tostring(msg.to.id)]['settings']['image'] = 'ok'
-          save_data(_config.moderation.data, data)
-          return 'Nothing Will Happend If image Sent! '
-        end
-      end
-    end
-
 if matches[1] == 'sticker' then
     	if not is_momod(msg) then
     		return "Only Admin Can Use This Option"
@@ -517,28 +488,6 @@ if matches[1] == 'sticker' then
         chat_del_user(receiver, 'user#id'..user_id, ok_cb, true)
         return 'You Kicked Because You Have Sent Stickers??'
       elseif settings.sticker == 'ok' then
-        return nil
-      end
-    end
-
- if msg.media and msg.media.caption == '.jpg' and not is_momod(msg) then
-      local user_id = msg.from.id
-      local chat_id = msg.to.id
-      local image_hash = 'mer_image:'..chat_id..':'..user_id
-      local is_image_offender = redis:get(image_hash)
-      if settings.image == 'warn' then
-        if is_image_offender then
-          chat_del_user(receiver, 'user#id'..user_id, ok_cb, true)
-          redis:del(image_hash)
-          return '[Warned Before]Kicked Because You Have Sent images'
-        elseif not is_image_offender then
-          redis:set(image_hash, true)
-          return ' Stop Sending image.This Is A Warn Next Time You Will Kicked!'
-        end
-      elseif settings.image == 'kick' then
-        chat_del_user(receiver, 'user#id'..user_id, ok_cb, true)
-        return 'You Kicked Because You Have Sent image??'
-      elseif settings.image == 'ok' then
         return nil
       end
     end
