@@ -539,6 +539,32 @@ local function lock_group_adds(msg, data, target)
      save_data(_config.moderation.data, data)
      return 'Adds protection has been disabled'
    end
+   local function group_silent(msg, data, target)
+   if not is_momod(msg) then
+     return "For moderators only!"
+   end
+   local group_silent = data[tostring(target)]['settings']['silent']
+   if group_silent == 'yes' then
+     return 'Group silent is already enabled'
+   else
+     data[tostring(target)]['settings']['silent'] = 'yes'
+     save_data(_config.moderation.data, data)
+     return 'Group silent has been enabled'
+   end
+ end
+ 
+ local function unlock_silent(msg, data, target)
+   if not is_momod(msg) then
+     return "For moderators only!"
+   end
+   local group_silent = data[tostring(target)]['settings']['silent']
+   if group_silent == 'no' then
+     return 'Group silent is already disabled'
+   else
+     data[tostring(target)]['settings']['silent'] = 'no'
+     save_data(_config.moderation.data, data)
+     return 'Group silent has been disabled'
+   end
    local function lock_group_fosh(msg, data, target)
   if not is_momod(msg) then
     return "For moderators only!"
@@ -1126,6 +1152,17 @@ local function run(msg, matches)
         return set_descriptionmod(msg, data, target, about)
       end
     end
+    if matches[1] == 'silent' then
+      local target = msg.to.id
+     if matches[2] == 'yes' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] turned on silent ")
+        return group_silent(msg, data, target)
+      end
+     if matches[2] == 'no' then
+        savelog(msg.to.id, name_log.." ["..msg.from.id.."] turned off silent ")
+        return unlock_silent(msg, data, target)
+      end
+     end
     if matches[1] == 'lock' then
       local target = msg.to.id
       if matches[2] == 'name' then
@@ -1152,6 +1189,7 @@ local function run(msg, matches)
           savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked adds ")
           return lock_group_adds(msg, data, target)
         end
+        
        if matches[2] == 'fosh' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] locked fosh ")
        return lock_group_fosh(msg, data, target)
@@ -1425,6 +1463,7 @@ return {
   "^[!/.]([Dd]emote)",
   "^[!/.]([Ss]et) ([^%s]+) (.*)$",
   "^[!/.]([Ww]elcome) (.*)$",
+  "^[!/.]([Ss]ilent) (.*)$",
   "^[!/.]([Ll]ock) (.*)$",
   "^[!/.]([Ss]etowner) (%d+)$",
   "^[!/.]([Ss]etowner)",
@@ -1457,6 +1496,7 @@ return {
   "^([Dd]emote) (.*)$",
   "^([Dd]emote)",
   "^([Ss]et) ([^%s]+) (.*)$",
+  "^([Ss]ilent) (.*)$",
   "^([Ll]ock) (.*)$",
   "^([Ww]elcome) (.*)$",
   "^([Ss]etowner) (%d+)$",
