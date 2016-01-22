@@ -23,7 +23,6 @@ end
 return {patterns = {
 "(.*)",
 }, run = run}
-end
 --Developed By aminaleahmad : https://github.com/aminaleahmad
 --Pls Don't Delete This Lines
 --Thanks
