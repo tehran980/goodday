@@ -101,15 +101,15 @@ do
                        ..msg.to.title..' (ID: '..msg.to.id..')'
           return text
         end
-      elseif is_mod(msg) and matches[1] == 'chat' then
+      elseif is_momod(msg) and matches[1] == 'chat' then
         if matches[2] == 'pm' or matches[2] == 'txt' or matches[2] == 'pmtxt' then
           chat_info(receiver, returnids, {msg=msg, matches=matches[2]})
         else
           chat_info(receiver, returnids, {msg=msg})
         end
-      elseif is_mod(msg) and string.match(matches[1], '^@.+$') then
+      elseif is_momod(msg) and string.match(matches[1], '^@.+$') then
         chat_info(receiver, scan_name, {receiver=receiver, user=matches[1]})
-      elseif is_mod(msg) and string.gsub(matches[1], ' ', '_') then
+      elseif is_momod(msg) and string.gsub(matches[1], ' ', '_') then
         user = string.gsub(matches[1], ' ', '_')
         chat_info(receiver, scan_name, {receiver=receiver, name=matches[1]})
       end
