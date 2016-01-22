@@ -81,17 +81,10 @@ do
     elseif not extra.matches then
       send_large_msg('chat#id'..chat_id, text)
     end
-    if data[tostring('admins')][tostring(user_id)] then
-    who = 'Admin'
-  elseif data[tostring(msg.to.id)]['moderators'][tostring(user_id)] then
-    who = 'Moderator'
-  elseif data[tostring(msg.to.id)]['set_owner'] == tostring(user_id) then
-    who = 'Owner'
-  elseif tonumber(result.from.id) == tonumber(our_id) then
-    who = 'Group creator'
-  else
-    who = 'Member'
-  end
+  local um_hash = 'msgs:'..result.from.id..':'..result.to.id
+  user_info.msgs = tonumber(redis:get(um_hash) or 0)
+  user_info.name = user_print_name(user)..' ['..result.from.id..']'
+  local msgs = '6-messages sent : '..user_info.msgs
   end
 
   local function run(msg, matches)
