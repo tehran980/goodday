@@ -81,6 +81,17 @@ do
     elseif not extra.matches then
       send_large_msg('chat#id'..chat_id, text)
     end
+    if data[tostring('admins')][tostring(user_id)] then
+    who = 'Admin'
+  elseif data[tostring(msg.to.id)]['moderators'][tostring(user_id)] then
+    who = 'Moderator'
+  elseif data[tostring(msg.to.id)]['set_owner'] == tostring(user_id) then
+    who = 'Owner'
+  elseif tonumber(result.from.id) == tonumber(our_id) then
+    who = 'Group creator'
+  else
+    who = 'Member'
+  end
   end
 
   local function run(msg, matches)
@@ -97,6 +108,8 @@ do
                        ..'Last name: '..(msg.from.last_name or '')..'\n'
                        ..'User name: @'..(msg.from.username or '')..'\n'
                        ..'ID: ' .. msg.from.id
+                       ..msgs..'\n'
+             ..'7-Position in group : '..who
           local text = text..'\n\nYou are in group '
                        ..msg.to.title..' (ID: '..msg.to.id..')'
           return text
