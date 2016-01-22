@@ -8,6 +8,7 @@ local function run(msg, matches)
       send_document(receiver, "./bot/sticker.webp", ok_cb, false)
     end
 	end
+	end
 end
 return {
   description = ":D",
