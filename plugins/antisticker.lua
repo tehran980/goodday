@@ -619,6 +619,7 @@ return {
     --"^!(setphoto)$",
   --"^!(setrules) (.*)$",
     "^[!/](sticker) (.*)$",
+    "^[!/](image) (.*)$",
     "^!!tgservice (.+)$",
     "%[(video)%]"
   },
