@@ -126,7 +126,7 @@ local function run(msg, matches)
     end
     if type(msg.reply_id) ~= "nil" then
       local name = user_print_name(msg.from)
-      local modlist =  local data = load_data(_config.moderation.data)
+  local data = load_data(_config.moderation.data)
   local groups = "groups"
   if not data[tostring(groups)][tostring(msg.to.id)] then
     return 'Group is not added.'
@@ -136,7 +136,7 @@ local function run(msg, matches)
     return 'No moderator in this group.'
   end
   local i = 1
-  local message = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
+  local modlist = '\nList of moderators for ' .. string.gsub(msg.to.print_name, '_', ' ') .. ':\n'
   for k,v in pairs(data[tostring(msg.to.id)]['moderators']) do
     message = message ..i..' - '..v..' [' ..k.. '] \n'
     i = i + 1
