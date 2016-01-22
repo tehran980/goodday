@@ -539,12 +539,12 @@ local function lock_group_adds(msg, data, target)
      save_data(_config.moderation.data, data)
      return 'Adds protection has been disabled'
    end
-   local function group_silent(msg, data, target)
+   local function lock_group_silent(msg, data, target)
    if not is_momod(msg) then
      return "For moderators only!"
    end
-   local group_silent = data[tostring(target)]['settings']['silent']
-   if group_silent == 'yes' then
+   local lock_group_silent = data[tostring(target)]['settings']['silent']
+   if lock_group_silent == 'yes' then
      return 'Group silent is already enabled'
    else
      data[tostring(target)]['settings']['silent'] = 'yes'
@@ -1156,7 +1156,7 @@ local function run(msg, matches)
       local target = msg.to.id
      if matches[2] == 'yes' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] turned on silent ")
-        return group_silent(msg, data, target)
+        return lock_group_silent(msg, data, target)
       end
      if matches[2] == 'no' then
         savelog(msg.to.id, name_log.." ["..msg.from.id.."] turned off silent ")
