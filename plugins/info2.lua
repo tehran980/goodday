@@ -100,7 +100,8 @@ do
                        ..'First name: '..(msg.from.first_name or '')..'\n'
                        ..'Last name: '..(msg.from.last_name or '')..'\n'
                        ..'User name: @'..(msg.from.username or '')..'\n'
-                       ..'ID: ' .. msg.from.id
+                       ..'ID: ' .. msg.from.id.. '\n'
+                       ..'Madages: '..msgs
           local text = text..'\n\nYou are in group '
                        ..msg.to.title..' (ID: '..msg.to.id..')'
           return text
