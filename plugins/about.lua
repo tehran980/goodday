@@ -5,5 +5,8 @@ local function run(msg)
     end
 end
 return {patterns = {
-   "test"
+   "!about us",
+   "about us",
+   "درباره",
+   "!درباره",
     }, run = run}
