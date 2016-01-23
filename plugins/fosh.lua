@@ -1,7 +1,11 @@
 do
 
 function run(msg, matches)
-  return "کیرم تو کس ننت " .. matches[1]
+if msg.text == "fosh_bede" then
+	return "کیرم تو کس ننت " .. matches[1]
+end
+if msg.text == "salam_kon" then
+	return "سلام " .. matches[1]
 end
 
 return {
@@ -9,6 +13,7 @@ return {
   usage = "Say Hello to (name)",
   patterns = {
     "^be (.*) fosh bede",
+	"^be (.*) salam kon",
   }, 
   run = run 
 }
