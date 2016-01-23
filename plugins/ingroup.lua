@@ -21,7 +21,7 @@ local function check_member_autorealm(cb_extra, success, result)
           lock_abuse = 'yes',
           welcome_stat = 'yes',
           sticker = 'ok',
-          lock_tag = 'no',
+          antitag = 'no',
       --    lock_join = 'no',
       --    silent = 'no',
         }
@@ -58,7 +58,7 @@ local function check_member_realm_add(cb_extra, success, result)
           lock_abuse = 'yes',
           welcome_stat = 'yes',
           sticker = 'ok',
-          lock_tag = 'no',
+          antitag = 'no',
         --  lock_join = 'no',
        --   silent = 'no',
         }
@@ -97,7 +97,7 @@ function check_member_group(cb_extra, success, result)
           lock_abuse = 'yes',
           welcome_stat = 'yes',
           sticker = 'ok',
-          lock_tag = 'no',
+          antitag = 'no',
           --lock_join = 'no',
          -- silent = 'no',
         }
@@ -136,7 +136,7 @@ local function check_member_modadd(cb_extra, success, result)
           lock_abuse = 'yes',
           welcome_stat = 'yes',
             sticker = 'ok',
-             lock_tag = 'no',
+             antitag = 'no',
           --lock_join = 'no',
          -- silent = 'no',
         }
