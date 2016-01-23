@@ -27,9 +27,9 @@ do
         end
       end
     end
-    --if next(founds) == nil then -- Empty table
+   if next(founds) == nil then -- Empty table
   --    send_large_msg(extra.receiver, (extra.name or extra.user)..' not found on this chat.')
-   -- else
+   else
       local text = ''
       for k,user in pairs(founds) do
         text = text..'Name: '..(user.first_name or '')..' '..(user.last_name or '')..'\n'
