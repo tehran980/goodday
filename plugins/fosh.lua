@@ -8,7 +8,7 @@ return {
   description = "Says Hello to Someone", 
   usage = "Say Hello to (name)",
   patterns = {
-    "^(به (.*) فهش بده$)",
+    "^be (.*) fosh bede",
   }, 
   run = run 
 }
