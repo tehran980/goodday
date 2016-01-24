@@ -33,7 +33,7 @@ local function action_by_reply(extra, success, result)
   end
   for v,user in pairs(_config.sudo_users) do
     if user == user_id then
-      who = 'Babaei Junm'
+      who = 'My dady ❤️❤️❤️'
     end
   end
   local text = '1-Full name : '..(result.from.first_name or '')..' '..(result.from.last_name or '')..'\n'
