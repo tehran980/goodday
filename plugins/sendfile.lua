@@ -1,6 +1,9 @@
 do
 
 local function run(msg, matches)
+  if not is_sudo(msg) then
+    return "you have not accsess to filemanager"
+  end
   local receiver = get_receiver(msg)
   if matches[1] == 'send' then
     
