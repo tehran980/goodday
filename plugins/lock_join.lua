@@ -1,4 +1,5 @@
-if msg.action and msg.action.type then
+local function run(msg)
+    if msg.action and msg.action.type then
     local action = msg.action.type
     if action == 'chat_add_user_link' then
       local user_id = msg.from.id
@@ -8,6 +9,7 @@ if msg.action and msg.action.type then
     local msg = 'Join link is Locked !'
    local receiver = msg.to.id
     send_large_msg('chat#id'..receiver, msg.."\n", ok_cb, false)
+            end
         end
       end
    end
