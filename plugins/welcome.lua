@@ -50,9 +50,9 @@ local function description_rules(msg, nama)
    if data[tostring(msg.to.id)] then
       local about = ""
       local rules = ""
-      if data[tostring(msg.to.id)]["description"] then
-         about = data[tostring(msg.to.id)]["description"]
-         about = "\nدرباره گروه:\n"..about.."\n"
+     -- if data[tostring(msg.to.id)]["description"] then
+        -- about = data[tostring(msg.to.id)]["description"]
+        -- about = "\nدرباره گروه:\n"..about.."\n"
       end
       if data[tostring(msg.to.id)]["rules"] then
          rules = data[tostring(msg.to.id)]["rules"]
