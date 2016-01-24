@@ -6,5 +6,5 @@ local function run(msg)
 end
 
 return {patterns = {
-    "fwd",
+    "!fwd",
     }, run = run}
