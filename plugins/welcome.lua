@@ -65,7 +65,6 @@ local function description_rules(msg, nama)
       local receiver = get_receiver(msg)
       send_large_msg(receiver, text, ok_cb, false)
    end
-end
 
 local function run(msg, matches)
      local data = load_data(_config.moderation.data)
