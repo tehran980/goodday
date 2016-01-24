@@ -12,7 +12,6 @@ if msg.action and msg.action.type then
       end
    end
 end
-end
 return {patterns = {
 
   "^!!tgservice (.+)$",
