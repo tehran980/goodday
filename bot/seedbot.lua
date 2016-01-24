@@ -229,6 +229,7 @@ An advance Administration bot based on yagop/telegram-bot
 Admins
 @FakeAdmin [Founder][Developer][Help&Support]
 @alirezaasadi82 [Sponser][Help&Support]
+@solid021 [Help&Support]
 @Persian_Dewil [Help&Support]
 
 Special thanks to
@@ -236,6 +237,8 @@ awkward_potato
 Siyanew
 topkecleon
 Vamptacus
+Iman_daneshi
+BOY_CrazY
 ]],
     help_text_realm = [[
 Realm Commands:
@@ -356,11 +359,11 @@ return group id or user id
 !help
 This help text
 〰〰〰〰〰〰
-!lock [member|name|bots|leave|arabic]	
-Locks [member|name|bots|leaveing|arabic] 
+!lock [member|name|bots|leave|arabic|tag|adds]	
+Locks [member|name|bots|leaveing|arabic|tag|adds] 
 〰〰〰〰〰〰
-!unlock [member|name|bots|leave|arabic]
-Unlocks [member|name|bots|leaving|arabic]
+!unlock [member|name|bots|leave|arabic|tag|adds]
+Unlocks [member|name|bots|leaving|arabic|tag|adds]
 〰〰〰〰〰〰
 !set rules <text>
 Set <text> as rules
@@ -404,6 +407,30 @@ returns user id
 〰〰〰〰〰〰
 !log
 will return group logs
+〰〰〰〰〰〰
+!sticker [warn|kick|ok]
+warn : send warning if send sticker
+kick : kick user if send sticker
+ok : do nothing if send sticker
+〰〰〰〰〰〰
+!tagall [text]
+tag users && send your message
+〰〰〰〰〰〰
+!about us
+send about bot creators
+〰〰〰〰〰〰
+persiangulf
+send you perisangulf logo as sticker
+〰〰〰〰〰〰
+!all
+see all about group
+〰〰〰〰〰〰
+!block (user-id)
+!unblock (user-id)
+block or unblock users (for sudo)
+〰〰〰〰〰〰
+!linkpv
+send link to your pv (for first try you send 10 msg to bot)
 〰〰〰〰〰〰
 !banlist
 will return group ban list
