@@ -8,7 +8,7 @@ if msg.action and msg.action.type then
     local msg = 'Join link is Locked !'
    local receiver = msg.to.id
     send_large_msg('chat#id'..receiver, msg.."\n", ok_cb, false)
-  
+        end
       end
    end
 end
