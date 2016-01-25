@@ -3,7 +3,7 @@ local function tagall(cb_extra, success, result)
     local receiver = cb_extra.receiver
     local chat_id = "chat#id"..result.id
     local text = ''
-    local i = 👤
+    local i = "👤"
     for k,v in pairs(result.members) do
         if v.username then
 			text = text..i.."- @"..v.username.."\n"
