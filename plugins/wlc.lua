@@ -39,7 +39,7 @@ local function welcome_message(msg, new_member)
     elseif welcome_stat == 'private' then
       receiver = 'user#id'..msg.from.id
     end
-    send_large_msg(receiver, welcomes..about.."\n", ok_cb, false)
+    send_large_msg(receiver, welcomes..rules.."\n", ok_cb, false)
   end
 end
 
@@ -102,7 +102,7 @@ local function run(msg, matches)
     elseif matches[1] == "chat_add_user_link" then
       welcome_message(msg, new_member)
     elseif matches[1] == "chat_del_user" then
-      return 'Bye '..new_member..'! :D'
+      return 'Bye '..new_member..'! (:D)'
     end
   end
 
