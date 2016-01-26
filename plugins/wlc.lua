@@ -27,13 +27,13 @@ local function welcome_message(msg, new_member)
     local rules = ''
     if data[tostring(msg.to.id)]['description'] then
       about = data[tostring(msg.to.id)]['description']
-      about = "Acerca del grupo:\n"..about.."\n"
+      about = "Group About :\n"..about.."\n"
     end
     if data[tostring(msg.to.id)]['rules'] then
       rules = data[tostring(msg.to.id)]['rules']
-      rules = "\nNormas:\n"..rules.."\n"
+      rules = "\nGroup Rules :\n"..rules.."\n"
     end
-    local welcomes = "Bienvenid@ "..new_member..", has entrado a '"..string.gsub(msg.to.print_name, "_", " ").."'\n"
+    local welcomes = "Hello @ "..new_member..", You has entered to '"..string.gsub(msg.to.print_name, "_", " ").."'\n"
     if welcome_stat == 'group' then
       receiver = get_receiver(msg)
     elseif welcome_stat == 'private' then
