@@ -49,9 +49,9 @@ local function run(msg, matches)
   local welcome_stat = data[tostring(msg.to.id)]['settings']['welcome']
 
   if matches[1] == 'welcome' and is_sudo(msg) then
-    if matches[2] == 'chat' then
+    if matches[2] == 'group' then
       if welcome_stat ~= 'chat' then
-        data[tostring(msg.to.id)]['settings']['welcome'] = 'chat'
+        data[tostring(msg.to.id)]['settings']['welcome'] = 'group'
         save_data(_config.moderation.data, data)
       end
       return 'Welcome service already enabled.\nWelcome message will shown in chat.'
