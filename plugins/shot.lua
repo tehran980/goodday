@@ -39,8 +39,8 @@ local function run(msg, matches)
    if find then
       local imgurl = base .. find
       local receiver = get_receiver(msg)
-      return "pls wait a min the image size is big"
       send_photo_from_url(receiver, imgurl)
+      return "pls wait a min the image size is big"
    end
 end
 
