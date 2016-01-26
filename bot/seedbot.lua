@@ -227,10 +227,9 @@ function create_config( )
     about_text = [[Teleseed v2 - Open Source
 An advance Administration bot based on yagop/telegram-bot 
 Admins
-@FakeAdmin [Founder][Developer][Help&Support]
+@Mrhalix [Founder][Developer][Help&Support]
 @alirezaasadi82 [Sponser][Help&Support]
 @solid021 [Help&Support]
-@Persian_Dewil [Help&Support]
 
 Special thanks to
 awkward_potato
@@ -457,8 +456,8 @@ will return group ban list
 !pv pg
 send pv you commands
 〰〰〰〰〰〰
-!welcome [chat|pm|disable]
-set welcome to chat (group)
+!welcome [group|pm|disable]
+set welcome to group
 set welcome to pm (pv)
 set welcome disable
 〰〰〰〰〰〰
