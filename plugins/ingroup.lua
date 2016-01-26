@@ -23,6 +23,7 @@ local function check_member_autorealm(cb_extra, success, result)
           sticker = 'ok',
           antitag = 'no',
        lock_join = 'no',
+       welcome = 'chat',
       --    silent = 'no',
         }
       }
@@ -61,6 +62,7 @@ local function check_member_realm_add(cb_extra, success, result)
           antitag = 'no',
           lock_join = 'no',
        --   silent = 'no',
+       welcome = 'chat',
         }
       }
       save_data(_config.moderation.data, data)
@@ -100,6 +102,7 @@ function check_member_group(cb_extra, success, result)
           antitag = 'no',
           lock_join = 'no',
          -- silent = 'no',
+         welcome = 'chat',
         }
       }
       save_data(_config.moderation.data, data)
@@ -139,6 +142,7 @@ local function check_member_modadd(cb_extra, success, result)
              antitag = 'no',
          lock_join = 'no',
          -- silent = 'no',
+         welcome = 'chat',
         }
       }
       save_data(_config.moderation.data, data)
@@ -232,7 +236,7 @@ local function show_group_settingsmod(msg, data, target)
     	leave_ban = data[tostring(msg.to.id)]['settings']['leave_ban']
    	end
   local settings = data[tostring(target)]['settings']
- local text = "Group settings:\nLock group name✏️: "..settings.lock_name.."\nLock group photo🎡: "..settings.lock_photo.."\nLock group member👥: "..settings.lock_member.."\nflood sensitivity🤘: f."..NUM_MSG_MAX.."\nBot protection👾: "..bots_protection.."\nAdds protection☠: "..settings.lock_adds.."\nLock Tag🆔: "..settings.antitag.."\nSticker Policy👻: "..settings.sticker
+ local text = "Group settings:\nLock group name✏️: "..settings.lock_name.."\nLock group photo🎡: "..settings.lock_photo.."\nLock group member👥: "..settings.lock_member.."\nflood sensitivity🤘: f."..NUM_MSG_MAX.."\nBot protection👾: "..bots_protection.."\nAdds protection☠: "..settings.lock_adds.."\nLock Tag🆔: "..settings.antitag.."\nSticker Policy👻: "..settings.sticker.."\nWelcome👤➕:"..welcome
   return text
 end
 
