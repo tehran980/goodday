@@ -3,6 +3,5 @@ local function run(msg)
 return buy
 end
 return {patterns = {
-   "[!/.]buyfa",
-   "[!/.]buyen",
+   "[!/.]buy",
     }, run = run}
