@@ -401,9 +401,13 @@ Returns text of [value]
 !clean [modlist|rules|about]
 Will clear [modlist|rules|about] and set it to nil
 〰〰〰〰〰〰
-!res [username]
-returns user id
-"!res @username"
+!info [username]
+send you a user stats
+〰〰〰〰〰〰
+!public [yes|no]
+allow to user see|join your group with
+!chats
+in bot pv
 〰〰〰〰〰〰
 !log
 will return group logs
@@ -427,13 +431,36 @@ see all about group
 〰〰〰〰〰〰
 !block (user-id)
 !unblock (user-id)
-block or unblock users (for sudo)
+block or unblock users (sudo only)
+〰〰〰〰〰〰
+!kickinactive
+kick inactive users from Group
+〰〰〰〰〰〰
+!calc [expression]
+A simply calculator
+〰〰〰〰〰〰
+!qr [text]
+create qr code with [text] text
+〰〰〰〰〰〰
+!webshot [url]
+create a wabshot from [url]
+〰〰〰〰〰〰
+!pv [user-id] [text]
+send text to user-id (sudo only)
 〰〰〰〰〰〰
 !linkpv
 send link to your pv (for first try you send 10 msg to bot)
 〰〰〰〰〰〰
 !banlist
 will return group ban list
+〰〰〰〰〰〰
+!pv pg
+send pv you commands
+〰〰〰〰〰〰
+!welcome [chat|pm|disable]
+set welcome to chat (group)
+set welcome to pm (pv)
+set welcome disable
 〰〰〰〰〰〰
 **U can use "/" and "!"  and "."
 〰〰〰〰〰〰
