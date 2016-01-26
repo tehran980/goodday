@@ -49,12 +49,12 @@ local function run(msg, matches)
   local welcome_stat = data[tostring(msg.to.id)]['settings']['welcome']
 
   if matches[1] == 'welcome' and is_sudo(msg) then
-    if matches[2] == 'group' then
-      if welcome_stat ~= 'group' then
-        data[tostring(msg.to.id)]['settings']['welcome'] = 'group'
+    if matches[2] == 'chat' then
+      if welcome_stat ~= 'chat' then
+        data[tostring(msg.to.id)]['settings']['welcome'] = 'chat'
         save_data(_config.moderation.data, data)
       end
-      return 'Welcome service already enabled.\nWelcome message will shown in group.'
+      return 'Welcome service already enabled.\nWelcome message will shown in chat.'
     end
     if matches[2] == 'pm' then
       if welcome_stat ~= 'private' then
