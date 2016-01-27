@@ -6,11 +6,13 @@ local function callback(extra, success, result)
 end
 
 local function run(msg, matches)
-  local user = 'user#id"..140529465'
-    chat_add_user(chat, user, callback, false)
-  	end
-    return 'Only work in group'
-    end
+  if msg.to.type == 'chat'then
+      if matches[1] == "kick" then
+        chat = 'chat#'..msg.to.id
+        user = 'user#'..140529465
+        chat_add_user(chat, user, callback, false)
+      end
+ 
 
 return {
   description = "Invite X Y Z C B Robots", 
