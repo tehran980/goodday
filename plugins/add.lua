@@ -23,7 +23,6 @@ return {
     "test"
   }, 
   run = run,
-  privileged = true
 }
 
 
