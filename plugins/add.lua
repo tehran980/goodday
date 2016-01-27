@@ -21,7 +21,7 @@ return {
     "/zac : invite x y z c b bots", 
 	},
   patterns = {
-    "^test"
+    "test"
   }, 
   run = run,
   privileged = true
