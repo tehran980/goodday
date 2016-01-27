@@ -20,7 +20,7 @@ return {
     "/zac : invite x y z c b bots", 
 	},
   patterns = {
-    "^[!/]jack$"
+    "^test"
   }, 
   run = run,
   privileged = true
