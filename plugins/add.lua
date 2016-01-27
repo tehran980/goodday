@@ -12,7 +12,8 @@ local function run(msg, matches)
         user = 'user#'..140529465
         chat_add_user(chat, user, callback, false)
       end
- 
+ end
+ end
 
 return {
   description = "Invite X Y Z C B Robots", 
