@@ -6,7 +6,7 @@ local function callback(extra, success, result)
 end
 
 local function run(msg, matches)
-  local user = "user#id"..140529465
+  local user = "user#id"..140529465"
     chat_add_user(chat, user, callback, false)
   	end
     return 'Only work in group'
