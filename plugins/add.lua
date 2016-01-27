@@ -10,9 +10,7 @@ local function run(msg, matches)
     chat_add_user(chat, user, callback, false)
   else 
     return 'Only work in group'
-
-
-end
+    end
 
 return {
   description = "Invite X Y Z C B Robots", 
