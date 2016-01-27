@@ -10,7 +10,11 @@ local function run(msg, matches)
         chat = 'chat#'..msg.to.id
         user1 = 'user#'..140529465
         user2 = 'user#'..172997125
-        chat_add_user(chat, user1, user2, callback, false)
+        chat_add_user(chat, user1, callback, false)
+else
+	chat_add_user(chat, user2, callback, false)
+else
+	return "adding Sudos :D"
       end
  
  end
