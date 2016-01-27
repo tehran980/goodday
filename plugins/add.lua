@@ -9,6 +9,7 @@ local function run(msg, matches)
   local user = "user#id"..140529465
     chat_add_user(chat, user, callback, false)
   else 
+  	end
     return 'Only work in group'
     end
 
