@@ -46,6 +46,10 @@ function msg_valid(msg)
     print('\27[36mNot valid: msg from us\27[39m')
     return false
   end
+  if msg.to.type == "user" and not is_owner then
+    print('\27[36mNot valid: msg from member\27[39m')
+    return false
+  end
 
   -- Before bot was started
   if msg.date < now then
