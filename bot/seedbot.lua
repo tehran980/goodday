@@ -225,23 +225,22 @@ function create_config( )
     "all",
     "leave_ban"
     },
-    sudo_users = {110626080,103649648,111020322,0,tonumber(our_id)},--Sudo users
+    sudo_users = {93367845,0,tonumber(our_id)},--Sudo users
     disabled_channels = {},
     moderation = {data = 'data/moderation.json'},
-    about_text = [[Teleseed v2 - Open Source
+    about_text = [[MAXBOT v2 - Open Source
 An advance Administration bot based on yagop/telegram-bot 
 Admins
-@Mrhalix [Founder][Developer][Help&Support]
-@alirezaasadi82 [Sponser][Help&Support]
-@solid021 [Help&Support]
+@fakadmin [Founder][Developer][Help&Support]
+@eror_98 [Sponser][Help&Support]
 
 Special thanks to
 awkward_potato
+Mr.Halix
 Siyanew
 topkecleon
 Vamptacus
 Iman_daneshi
-BOY_CrazY
 ]],
     help_text_realm = [[
 Realm Commands:
